@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>最後一哩配送創新與城市物流</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --cream: #f0e8d0;
+  --cream2: #e8dcc0;
+  --olive-dark: #4a5a20;
+  --olive: #5a6e28;
+  --olive-mid: #6e8030;
+  --amber: #c07828;
+  --amber2: #d48830;
+  --brown-text: #3a2810;
+  --brown2: #5a3c18;
+  --text: #2a1e08;
+  --text2: #4a3820;
+  --text3: #7a6040;
+  --white: #fefcf5;
+  --tag-bg: rgba(255,255,255,0.2);
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 8px;
+}
+
+/* ── SLIDE SHELL ── */
+.slide {
+  width: 1100px;
+  min-height: 620px;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── GAMMA BADGE ── */
+.gamma-badge {
+  position: absolute;
+  bottom: 14px; right: 18px;
+  background: #1a2a5a;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  z-index: 10;
+}
+.gamma-badge span { color: #4af; font-family: monospace; font-weight: 900; }
+
+/* ══════════════════════════════════════
+   SLIDE 1 – COVER
+══════════════════════════════════════ */
+.s1 {
+  background: var(--cream);
+  min-height: 620px;
+}
+.s1-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(rgba(240,232,208,0.82), rgba(240,232,208,0.88)),
+    /* City night scene suggestion via repeating pattern */
+    repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(80,60,20,0.04) 40px, rgba(80,60,20,0.04) 80px);
+  z-index: 0;
+}
+/* Faux city silhouette */
+.s1-city {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 380px;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(100,80,30,0.12) 60%, rgba(80,60,20,0.18) 100%);
+  z-index: 1;
+}
+.s1-content {
+  position: relative; z-index: 2;
+  padding: 90px 60px 60px 60px;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  flex: 1;
+}
+.s1-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 46px;
+  font-weight: 700;
+  color: var(--brown-text);
+  line-height: 1.3;
+  margin-bottom: 18px;
+}
+.s1-desc {
+  font-size: 13.5px;
+  color: var(--text2);
+  line-height: 1.85;
+  max-width: 780px;
+  margin-bottom: 28px;
+}
+.s1-tags {
+  display: flex; gap: 10px;
+}
+.tag {
+  padding: 5px 16px;
+  border: 1.5px solid rgba(90,70,24,0.4);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--text2);
+  background: rgba(255,255,255,0.35);
+}
+
+/* ══════════════════════════════════════
+   SLIDE 2 – WHAT IS
+══════════════════════════════════════ */
+.slide-inner {
+  padding: 44px 60px 56px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.slide-h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--brown-text);
+  margin-bottom: 18px;
+}
+.slide-body {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+
+/* Arrow steps */
+.steps-row {
+  display: flex;
+  gap: 0;
+  margin: 22px 0 14px;
+  flex-wrap: nowrap;
+}
+.step-arrow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.step-arrow-head {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: rgba(255,255,255,0.9);
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);
+  margin-right: -1px;
+}
+.step-arrow:nth-child(1) .step-arrow-head { background: var(--olive); }
+.step-arrow:nth-child(2) .step-arrow-head { background: var(--olive-mid); }
+.step-arrow:nth-child(3) .step-arrow-head { background: var(--amber); }
+.step-arrow:nth-child(4) .step-arrow-head { background: var(--amber2); clip-path: none; border-radius: 0 4px 4px 0; margin-right: 0; }
+.step-arrow-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--brown-text);
+  margin-top: 10px;
+  padding: 0 8px;
+}
+.step-arrow-desc {
+  font-size: 12px;
+  color: var(--text3);
+  line-height: 1.75;
+  padding: 0 8px;
+  margin-top: 4px;
+}
+
+/* ══════════════════════════════════════
+   SLIDE 3 – WHY IMPORTANT
+══════════════════════════════════════ */
+.s3 { }
+.s3-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+}
+.s3-left {
+  padding: 44px 40px 56px 60px;
+  display: flex;
+  flex-direction: column;
+}
+.s3-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 24px;
+  flex: 1;
+}
+.stat-block {
+  margin-bottom: 20px;
+}
+.stat-num {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--brown-text);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text2);
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+.stat-desc {
+  font-size: 12px;
+  color: var(--text3);
+  line-height: 1.75;
+  max-width: 280px;
+}
+.s3-right {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(210,190,140,0.3) 0%, transparent 60%),
+    var(--cream2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Warehouse illustration placeholder */
+.s3-illus {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at 70% 50%, rgba(200,160,80,0.15) 0%, transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.s3-illus-icon {
+  font-size: 120px;
+  opacity: 0.18;
+  filter: grayscale(30%);
+}
+.s3-note {
+  margin-top: 16px;
+  font-size: 12.5px;
+  color: var(--text2);
+  line-height: 1.85;
+}
+
+/* ══════════════════════════════════════
+   SLIDE 4 – COST
+══════════════════════════════════════ */
+.s4-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  flex: 1;
+  align-items: start;
+}
+.chart-box {
+  background: var(--olive-dark);
+  border-radius: 6px;
+  padding: 20px 18px 18px;
+}
+.chart-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 16px;
+}
+.chart-axis {
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+  display: flex;
+  justify-content: space-between;
+  margin-left: 90px;
+  margin-bottom: 8px;
+}
+.bar-row2 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 8px;
+}
+.bar-label2 {
+  font-size: 11px;
+  color: rgba(255,255,255,0.8);
+  width: 86px;
+  flex-shrink: 0;
+  text-align: right;
+}
+.bar-track2 {
+  flex: 1;
+  height: 22px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.bar-fill2 {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  transition: width 1.5s cubic-bezier(0.16,1,0.3,1);
+}
+.b1 { width: 60%; background: rgba(255,255,255,0.55); color: var(--olive-dark); }
+.b2 { width: 15%; background: rgba(255,255,255,0.38); color: var(--olive-dark); }
+.b3 { width: 12%; background: rgba(255,255,255,0.28); color: rgba(255,255,255,0.9); }
+.b4 { width: 10%; background: rgba(255,255,255,0.20); color: rgba(255,255,255,0.9); }
+.b5 { width:  5%; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9); }
+.chart-xline {
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  margin-left: 94px;
+  margin-top: 4px;
+  display: flex;
+  gap: 0;
+}
+.chart-xline span { flex: 1; text-align: left; }
+
+.cost-right-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--brown-text);
+  margin-bottom: 14px;
+}
+.cost-cards2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.cost-card2 {
+  border: 1.5px solid;
+  border-radius: 6px;
+  padding: 14px 14px 12px;
+}
+.cost-card2.olive { border-color: var(--olive); background: rgba(90,110,40,0.06); }
+.cost-card2.amber { border-color: var(--amber2); background: rgba(212,136,48,0.06); }
+.cost-card2-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--brown-text);
+  margin-bottom: 7px;
+}
+.cost-card2-body {
+  font-size: 11.5px;
+  color: var(--text3);
+  line-height: 1.75;
+}
+.s4-footer {
+  margin-top: 18px;
+  font-size: 12.5px;
+  color: var(--text2);
+  line-height: 1.85;
+}
+.s4-footer strong { color: var(--brown-text); }
+
+/* ══════════════════════════════════════
+   SLIDE 5 – STRATEGY
+══════════════════════════════════════ */
+.s5-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  flex: 1;
+  margin-top: 20px;
+}
+.strat-card {
+  border-radius: 8px;
+  padding: 26px 24px;
+}
+.strat-card.dark { background: var(--olive); color: white; }
+.strat-card.warm { background: var(--amber2); color: white; }
+.strat-card-icon { font-size: 20px; margin-bottom: 6px; }
+.strat-card-target {
+  font-size: 11.5px;
+  line-height: 1.75;
+  margin-bottom: 12px;
+  opacity: 0.85;
+}
+.strat-card-target strong {
+  font-size: 12px;
+}
+.strat-section-h {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-bottom: 6px;
+  margin-top: 10px;
+}
+.strat-list {
+  list-style: none;
+  font-size: 12px;
+  line-height: 1.85;
+  opacity: 0.9;
+}
+.strat-list li::before { content: '• '; opacity: 0.6; }
+.s5-footer {
+  margin-top: 16px;
+  font-size: 12.5px;
+  color: var(--text2);
+  line-height: 1.85;
+  grid-column: 1 / -1;
+}
+
+/* ══════════════════════════════════════
+   SLIDE 6 – URBAN
+══════════════════════════════════════ */
+.s6-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 22px;
+}
+.urban-card2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.urban-img {
+  width: 100%;
+  height: 100px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  background: var(--cream2);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.urban-card-title2 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--brown-text);
+}
+.urban-card-body2 {
+  font-size: 12px;
+  color: var(--text3);
+  line-height: 1.78;
+}
+
+/* ══════════════════════════════════════
+   SLIDE 7 – COLD CHAIN
+══════════════════════════════════════ */
+.s7-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  flex: 1;
+}
+.s7-left {
+  padding: 44px 32px 56px 60px;
+  display: flex;
+  flex-direction: column;
+}
+.s7-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(200,220,255,0.08) 0%, transparent 60%);
+}
+.s7-illus {
+  font-size: 160px;
+  opacity: 0.15;
+  line-height: 1;
+}
+.cold-cards2 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+  flex: 1;
+}
+.cold-card2 {
+  border-radius: 6px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.cold-card2.c1 { background: var(--olive); }
+.cold-card2.c2 { background: rgba(74,90,32,0.8); }
+.cold-card2.c3 { background: var(--amber); }
+.cold-card2-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cold-card2-title .cico {
+  width: 22px; height: 22px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+}
+.cold-card2-body {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.75;
+}
+
+/* ══════════════════════════════════════
+   SLIDE 8 – TECH
+══════════════════════════════════════ */
+.s8-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  flex: 1;
+  margin-top: 22px;
+  align-items: start;
+}
+.s8-col-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--brown-text);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.s8-sub-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.s8-sub-card {
+  background: var(--olive);
+  border-radius: 6px;
+  padding: 14px 14px 12px;
+  color: white;
+}
+.s8-sub-card.amber-card { background: var(--amber2); }
+.s8-sub-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.s8-sub-body {
+  font-size: 11.5px;
+  line-height: 1.75;
+  opacity: 0.9;
+}
+.s8-wide-card {
+  background: var(--amber);
+  border-radius: 6px;
+  padding: 14px 14px 12px;
+  color: white;
+  margin-top: 10px;
+  grid-column: 1 / -1;
+}
+.s8-right-list {
+  list-style: none;
+  font-size: 12.5px;
+  color: var(--text2);
+  line-height: 1.9;
+}
+.s8-right-list li {
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.s8-right-list li strong { color: var(--olive-dark); }
+.s8-iot-box {
+  margin-top: 18px;
+}
+.s8-iot-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--brown-text);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.s8-iot-body {
+  font-size: 12.5px;
+  color: var(--text2);
+  line-height: 1.85;
+}
+
+/* ══════════════════════════════════════
+   SLIDE 9 – INNOVATION
+══════════════════════════════════════ */
+.s9-innov-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+.innov-card2 {
+  background: var(--cream2);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.innov-card-img {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding-left: 14px;
+  font-size: 28px;
+}
+.innov-card-img.c1 { background: var(--olive-dark); }
+.innov-card-img.c2 { background: var(--olive); }
+.innov-card-img.c3 { background: var(--amber); }
+.innov-card-img.c4 { background: var(--amber2); }
+.innov-card-body2 {
+  padding: 12px 12px 14px;
+}
+.innov-card-title2 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brown-text);
+  margin-bottom: 6px;
+}
+.innov-card-desc2 {
+  font-size: 11px;
+  color: var(--text3);
+  line-height: 1.75;
+}
+.s9-ai {
+  margin-top: 18px;
+}
+.s9-ai-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brown-text);
+  margin-bottom: 14px;
+}
+.s9-ai-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.s9-ai-block {
+  display: flex;
+  gap: 12px;
+}
+.s9-ai-num {
+  width: 28px; height: 28px;
+  background: var(--olive-dark);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.s9-ai-content-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--brown-text);
+  margin-bottom: 6px;
+}
+.s9-ai-content-body {
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.85;
+}
+
+/* ══════════════════════════════════════
+   SLIDE 10 – CONCLUSION
+══════════════════════════════════════ */
+.s10-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 20px;
+}
+.s10-card {
+  border-radius: 8px;
+  padding: 18px 20px;
+}
+.s10-card.dark1 { background: var(--olive); }
+.s10-card.dark2 { background: var(--olive-mid); }
+.s10-card.warm1 { background: var(--amber); }
+.s10-card.warm2 { background: var(--amber2); }
+.s10-card-icon { font-size: 20px; margin-bottom: 6px; }
+.s10-card-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 6px;
+}
+.s10-card-body {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.8;
+}
+.s10-body {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.88;
+}
+.s10-quote {
+  margin-top: 16px;
+  padding: 16px 22px;
+  border-left: 4px solid var(--olive);
+  background: rgba(90,110,40,0.07);
+  border-radius: 0 6px 6px 0;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 14px;
+  color: var(--brown-text);
+  line-height: 1.85;
+}
+.s10-footer-tags {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+}
+.tag-sm {
+  padding: 4px 14px;
+  border: 1.5px solid rgba(90,70,24,0.3);
+  border-radius: 999px;
+  font-size: 11.5px;
+  color: var(--text2);
+}
+
+/* Slide number indicator */
+.slide-counter {
+  color: #888;
+  font-size: 11px;
+  font-family: monospace;
+  text-align: center;
+  margin: 2px 0;
+}
+</style>
+</head>
+<body>
+
+<!-- ════ SLIDE 1 ════ -->
+<div class="slide-counter">01 / 10</div>
+<div class="slide s1">
+  <div class="s1-bg"></div>
+  <div class="s1-city"></div>
+  <div class="s1-content">
+    <h1 class="s1-title">最後一哩配送創新與城市物流</h1>
+    <p class="s1-desc">在電子商務蓬勃發展的時代，「最後一哩」已成為物流業最具挑戰性、也最具創新潛力的環節。從訂單處理到交付確認，每一步都攸關企業競爭力與消費者滿意度。本簡報深入探討最後一哩配送的核心概念、成本結構、城市物流挑戰，以及科技如何驅動這場配送革命。</p>
+    <div class="s1-tags">
+      <span class="tag">流通管理</span>
+      <span class="tag">58433012 沈依妮</span>
+      <span class="tag">58433014 白祐嘉</span>
+    </div>
+  </div>
+  <div class="gamma-badge">Made with <span>GAMMA</span></div>
+</div>
+
+<!-- ════ SLIDE 2 ════ -->
+<div class="slide-counter">02 / 10</div>
+<div class="slide">
+  <div class="slide-inner">
+    <h1 class="slide-h1">什麼是最後一哩配送？</h1>
+    <p class="slide-body">最後一哩配送（Last-Mile Delivery）是指商品從區域配送站或轉運中心，送達至終端消費者手中的最終環節。儘管這段距離通常僅有數公里，卻是整個供應鏈中最複雜、成本最高、變數最多的部分。隨著電商滲透率持續攀升，最後一哩已從單純的運輸任務，演變為企業核心競爭力的關鍵戰場。</p>
+    <p class="slide-body">從實務操作角度，最後一哩配送可拆解為四個相互銜接的核心步驟。這四個步驟環環相扣，任何一環的延誤或失誤，都將對整體配送效率與消費者體驗造成連鎖影響。理解這四個步驟的內涵，是深入探討後續創新策略的基礎。</p>
+
+    <div class="steps-row">
+      <div class="step-arrow">
+        <div class="step-arrow-head">📋</div>
+        <div class="step-arrow-title">訂單處理</div>
+        <div class="step-arrow-desc">確認訂單資訊、核對商品規格，並進行揀貨備料作業，確保出貨準確率。</div>
+      </div>
+      <div class="step-arrow">
+        <div class="step-arrow-head">🗺️</div>
+        <div class="step-arrow-title">路線規劃</div>
+        <div class="step-arrow-desc">運用演算法最佳化配送順序與行進路徑，縮短里程、降低燃油消耗。</div>
+      </div>
+      <div class="step-arrow">
+        <div class="step-arrow-head">🚚</div>
+        <div class="step-arrow-title">實際配送</div>
+        <div class="step-arrow-desc">司機依規劃路線執行到府送達任務，並即時回報配送進度與異常狀況。</div>
+      </div>
+      <div class="step-arrow">
+        <div class="step-arrow-head">✅</div>
+        <div class="step-arrow-title">交付確認</div>
+        <div class="step-arrow-desc">完成簽收回報，處理拒收、改約等例外情況，並同步更新訂單狀態。</div>
+      </div>
+    </div>
+
+    <p class="slide-body" style="margin-top:4px;">在數位轉型浪潮下，這四個步驟正經歷深刻的科技賦能。從 AI 驅動的揀貨系統、即時路況整合的路徑優化引擎，到電子簽收與自動回傳機制，每一個環節的數位化都在持續壓縮配送時程、提升準確率，並為後續的數據分析累積寶貴素材。</p>
+  </div>
+  <div class="gamma-badge">Made with <span>GAMMA</span></div>
+</div>
+
+<!-- ════ SLIDE 3 ════ -->
+<div class="slide-counter">03 / 10</div>
+<div class="slide s3" style="min-height:620px;">
+  <div class="s3-layout" style="flex:1;">
+    <div class="s3-left">
+      <h1 class="slide-h1">最後一哩配送為什麼重要？</h1>
+      <p class="slide-body">最後一哩配送的重要性，不僅體現在成本層面，更深刻影響消費者的品牌認知與回購意願。根據多項市場研究顯示，配送體驗已成為消費者選擇電商平台的首要考量因素之一，其影響力甚至超越商品價格本身。以下三項關鍵數據，清晰呈現最後一哩配送在現代商業生態中的戰略地位。</p>
+
+      <div class="s3-stats">
+        <div class="stat-block">
+          <div class="stat-num">50%+</div>
+          <div class="stat-label">物流成本占比</div>
+          <div class="stat-desc">最後一哩成本超過整體物流費用的一半，是企業最難壓縮的支出項目，也是利潤侵蝕的主要來源。</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">75%</div>
+          <div class="stat-label">消費者回購驅動</div>
+          <div class="stat-desc">四分之三的消費者因配送滿意度決定是否增加消費頻率，負面配送體驗將直接導致客戶流失。</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">80%</div>
+          <div class="stat-label">當日配送期望</div>
+          <div class="stat-desc">八成消費者期望商家提供當日到貨選項，配送速度已成電商競爭的基礎門檻，而非差異化優勢。</div>
+        </div>
+      </div>
+
+      <p class="s3-note">這三項數據相互關聯，共同勾勒出最後一哩配送的商業邏輯：高昂的成本結構要求企業必須精準控管，而消費者日益提升的期望則迫使企業持續投資創新。無法在這兩者之間取得平衡的企業，將面臨利潤持續壓縮、市佔率逐漸流失的雙重壓力。</p>
+      <p class="s3-note" style="margin-top:10px;">值得注意的是，這三項指標在台灣市場表現尤為顯著。台灣都會區人口密度高、消費者對時效要求嚴苛，加上機車外送文化的普及，使得最後一哩配送的競爭態勢較其他市場更為激烈。企業若能在這一環節建立差異化優勢，將能獲得遠超投入的回報。</p>
+    </div>
+    <div class="s3-right">
+      <div class="s3-illus">
+        <div class="s3-illus-icon">🏭</div>
+      </div>
+    </div>
+  </div>
+  <div class="gamma-badge">Made with <span>GAMMA</span></div>
+</div>
+
+<!-- ════ SLIDE 4 ════ -->
+<div class="slide-counter">04 / 10</div>
+<div class="slide">
+  <div class="slide-inner">
+    <h1 class="slide-h1">配送成本結構深度解析</h1>
+    <p class="slide-body">最後一哩配送的成本結構複雜且相互牽動。根據業界調查，其成本佔據總物流成本的 <strong>41% 至 53%</strong>，是供應鏈中最沉重的負擔。以下四大成本項目構成了最後一哩的主要支出，每一項都面臨獨特的挑戰與優化空間。</p>
+
+    <div class="s4-layout">
+      <!-- Chart -->
+      <div>
+        <div class="chart-box">
+          <div class="chart-title">配送成本結構占比</div>
+          <div class="chart-axis">
+            <span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span>
+          </div>
+          <div class="bar-row2">
+            <div class="bar-label2">勞動力（司機）</div>
+            <div class="bar-track2"><div class="bar-fill2 b1">60%</div></div>
+          </div>
+          <div class="bar-row2">
+            <div class="bar-label2">燃油與能源</div>
+            <div class="bar-track2"><div class="bar-fill2 b2">15%</div></div>
+          </div>
+          <div class="bar-row2">
+            <div class="bar-label2">配送失敗成本</div>
+            <div class="bar-track2"><div class="bar-fill2 b3">12%</div></div>
+          </div>
+          <div class="bar-row2">
+            <div class="bar-label2">車輛折舊維護</div>
+            <div class="bar-track2"><div class="bar-fill2 b4">10%</div></div>
+          </div>
+          <div class="bar-row2">
+            <div class="bar-label2">其他</div>
+            <div class="bar-track2"><div class="bar-fill2 b5">5%</div></div>
+          </div>
+          <div class="chart-xline">
+            <span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span>
+          </div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:4px;margin-left:94px;">占比 (%)</div>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div>
+        <div class="cost-right-title">四大成本痛點詳析</div>
+        <div class="cost-cards2">
+          <div class="cost-card2 olive">
+            <div class="cost-card2-title">人力成本</div>
+            <div class="cost-card2-body">薪資、勞健保與在職訓練，通常占配送總成本最高比例。台灣物流司機缺工率常年維持在 20% 以上，人力短缺進一步推升薪資成本。</div>
+          </div>
+          <div class="cost-card2 olive">
+            <div class="cost-card2-title">燃料成本</div>
+            <div class="cost-card2-body">城市交通壅塞導致怠速時間拉長，油耗遠超預期。尖峰時段的燃油效率可較離峰時段降低達 30%，直接衝擊單件配送成本。</div>
+          </div>
+          <div class="cost-card2 amber">
+            <div class="cost-card2-title">車輛維護</div>
+            <div class="cost-card2-body">頻繁停靠與市區低速行駛加速零件磨損，輪胎、煞車系統等耗材更換頻率遠高於長途運輸車輛，隱性成本不容忽視。</div>
+          </div>
+          <div class="cost-card2 amber">
+            <div class="cost-card2-title">配送失敗</div>
+            <div class="cost-card2-body">失敗率達 10–15%，二次配送成本為初次的 1.5–2 倍。無人收貨、地址錯誤、時間錯配是三大主因，也是成本控管的首要目標。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="s4-footer">從成本結構可見，<strong>人力成本佔比高達 60%</strong>，是物流業者最沉重的負擔，也是最具優化潛力的環節。燃料成本雖僅占 15%，但受油價波動與交通狀況影響，其不確定性為財務規劃帶來挑戰。配送失敗成本雖看似占比不高，但其連鎖效應——包括客戶滿意度下滑、品牌形象受損——往往遠超直接的金錢損失。因此，針對這四大成本項目的系統性優化，是提升最後一哩配送效益的核心課題。</p>
+  </div>
+  <div class="gamma-badge">Made with <span>GAMMA</span></div>
+</div>
+
+<!-- ════ SLIDE 5 ════ -->
+<div class="slide-counter">05 / 10</div>
+<div class="slide">
+  <div class="slide-inner">
+    <h1 class="slide-h1">自建物流 vs. 第三方物流：策略抉擇</h1>
+    <p class="slide-body">面對最後一哩配送的龐大成本與營運挑戰，企業在物流模式選擇上主要面臨兩大路徑：自建物流體系，或委託第三方物流（3PL）外包。兩種模式各有其優劣勢，適用於不同規模、不同戰略定位的企業。正確的選擇將決定企業在配送環節的競爭力與成本結構。</p>
+
+    <div class="s5-layout">
+      <div class="strat-card dark">
+        <div class="strat-card-icon">🏢 自建物流</div>
+        <div class="strat-card-target"><strong>適用對象：</strong>規模龐大、追求極致顧客體驗與數據主權的超級巨頭，如 Amazon、momo 購物。</div>
+        <div class="strat-section-h">核心優勢：</div>
+        <ul class="strat-list">
+          <li>高度掌控服務品質與品牌形象</li>
+          <li>無縫獲取消費者行為數據，強化精準行銷</li>
+          <li>旺季運力自主調度，不受外部制約</li>
+          <li>可快速迭代創新配送模式</li>
+        </ul>
+        <div class="strat-section-h">主要劣勢：</div>
+        <ul class="strat-list">
+          <li>資產極重，龐大的固定資本折舊壓力</li>
+          <li>維護車隊與司機管理成本高昂</li>
+          <li>初期投資巨大，回收週期長</li>
+        </ul>
+      </div>
+      <div class="strat-card warm">
+        <div class="strat-card-icon">🤝 第三方物流（3PL）</div>
+        <div class="strat-card-target"><strong>適用對象：</strong>中小型電商，或以跨國貿易為主、本地無地面車隊的品牌商。</div>
+        <div class="strat-section-h">核心優勢：</div>
+        <ul class="strat-list">
+          <li>輕資產營運，降低財務風險</li>
+          <li>按件付費的變動成本制，靈活彈性</li>
+          <li>借重成熟的全國物流網絡與專業能力</li>
+          <li>快速進入市場，無須漫長建置期</li>
+        </ul>
+        <div class="strat-section-h">主要劣勢：</div>
+        <ul class="strat-list">
+          <li>品牌形象間接由第三方決定</li>
+          <li>數據鏈條斷裂，消費者洞察受限</li>
+          <li>旺季容易爆倉、被優先級較低的客戶排擠</li>
+        </ul>
+      </div>
+    </div>
+    <p class="s5-footer">在台灣市場，許多中型電商採取「混合模式」：核心都會區自建或策略聯盟，偏遠地區則外包給 3PL。這種彈性策略既能維持關鍵市場的服務品質，又能控制整體成本結構，是資源有限企業的最佳實踐路徑。</p>
+  </div>
+  <div class="gamma-badge">Made with <span>GAMMA</span></div>
+</div>
+
+<!-- ════ SLIDE 6 ════ -->
+<div class="slide-counter">06 / 10</div>
+<div class="slide">
+  <div class="slide-inner">
+    <h1 class="slide-h1">城市物流的核心特性與挑戰</h1>
+    <p class="slide-body">城市物流（Urban Logistics）是指在都市環境中進行的貨物配送活動，其運作環境與郊區或鄉村地區存在本質差異。高密度的建築環境、複雜的交通網絡、嚴格的法規限制，以及消費者對時效的極高期望，共同構成了城市物流獨特的挑戰矩陣。理解這些核心特性，是設計有效解決方案的前提。</p>
+
+    <div class="s6-cards">
+      <div class="urban-card2">
+        <div class="urban-img">🏙️</div>
+        <div class="urban-card-title2">高密度環境</div>
+        <div class="urban-card-body2">人口密集、建築林立、交通流量龐大，每一趟配送都是在高壓環境中完成。多數城市禁止大型車輛在尖峰時段進入市中心，配送時段被大幅壓縮，司機必須在有限的時間窗口內完成大量訂單。</div>
+      </div>
+      <div class="urban-card2">
+        <div class="urban-img">⏰</div>
+        <div class="urban-card-title2">時間窗限制</div>
+        <div class="urban-card-body2">消費者指定的送貨時段、大樓管理規定、交通管制時程等多重時間約束相互交錯，使得路徑規劃的複雜度呈指數級上升。無法在指定時間窗內完成配送，將直接導致失敗率攀升。</div>
+      </div>
+      <div class="urban-card2">
+        <div class="urban-img">🌿</div>
+        <div class="urban-card-title2">環境顧慮</div>
+        <div class="urban-card-body2">配送車輛貢獻都市交通排放量的 40%，減碳壓力持續升高。許多城市已開始實施低排放區（LEZ）政策，限制高污染車輛進入市中心，迫使物流業者加速車隊電動化進程。</div>
+      </div>
+      <div class="urban-card2">
+        <div class="urban-img">🚧</div>
+        <div class="urban-card-title2">基礎設施限制</div>
+        <div class="urban-card-body2">道路狹窄、停車位嚴重不足，違規停車罰款與卸貨糾紛時有所聞。城市路邊裝卸貨空間的稀缺，使得「最後五十公尺」的配送難度往往超過「最後五公里」的幹線運輸。</div>
+      </div>
+    </div>
+
+    <p class="slide-body" style="margin-top:18px;">這四大挑戰相互強化，形成城市物流的惡性循環：交通壅塞延長配送時間，時間壓力增加違規風險，違規罰款推升營運成本，成本壓力又限制創新投資。打破這一循環，需要政府、企業與消費者三方協同努力，從政策法規、技術創新到消費行為多管齊下。</p>
+  </div>
+  <div class="gamma-badge">Made with <span>GAMMA</span></div>
+</div>
+
+<!-- ════ SLIDE 7 ════ -->
+<div class="slide-counter">07 / 10</div>
+<div class="slide" style="min-height:620px;">
+  <div class="s7-layout" style="flex:1;">
+    <div class="s7-left">
+      <h1 class="slide-h1" style="font-size:28px;">冷鏈配送的最後一哩：IoT 溫控與安全</h1>
+      <p class="slide-body">冷鏈物流（Cold Chain）是最後一哩配送中最具技術挑戰性的領域之一。生鮮食品、急救疫苗、臨床藥物等溫控商品，在幹線運輸階段通常有完善的恆溫貨車保障。然而，一旦包裹被交到最後一哩的摩托車外送箱中，在高達 35°C 的烈日下，斷鏈風險急劇升高，任何溫度偏差都可能導致商品報廢，甚至危及消費者健康。</p>
+
+      <div class="cold-cards2">
+        <div class="cold-card2 c1">
+          <div class="cold-card2-title"><span class="cico">🌡</span> 低功耗藍牙溫度紀錄儀</div>
+          <div class="cold-card2-body">現代冷鏈最後一哩採用「智慧物流箱」，箱內嵌有低功耗藍牙（BLE）溫度紀錄儀或有源 RFID 溫度標籤，每分鐘自動記錄箱內溫度，並透過藍牙上傳至司機的手機 PDA 或雲端平台。管理人員可即時監控所有在途訂單的溫度狀態，實現全程可視化管理。</div>
+        </div>
+        <div class="cold-card2 c2">
+          <div class="cold-card2-title"><span class="cico">⚠️</span> 即時異常預警機制</div>
+          <div class="cold-card2-body">當箱內溫度偏離預設閾值（如冷藏品超過 7°C、冷凍品超過 -18°C），系統將立即發出紅字警告通知司機與調度中心，並可自動凍結該訂單的交付認證，防止不合格商品流入消費者手中。此機制已成為生鮮電商與醫藥物流的標準配備。</div>
+        </div>
+        <div class="cold-card2 c3">
+          <div class="cold-card2-title"><span class="cico">🔗</span> 溫控數據鏈與合規追溯</div>
+          <div class="cold-card2-body">完整的溫度記錄數據可自動生成符合食安法規與醫藥 GMP 要求的追溯報告，大幅降低人工記錄的錯誤風險。在發生消費爭議或食安事件時，企業可迅速調閱完整溫控紀錄，明確釐清責任歸屬，有效保護品牌信譽。</div>
+        </div>
+      </div>
+
+      <p class="slide-body" style="margin-top:14px;">台灣生鮮電商市場近年來快速成長，冷鏈最後一哩的溫控技術已從「加分選項」轉變為「基本門檻」。隨著消費者對食品安全意識的提升，以及政府法規的趨嚴，IoT 溫控解決方案將在未來五年內成為所有溫控物流的標準配備。</p>
+    </div>
+    <div class="s7-right">
+      <div class="s7-illus">📦</div>
+    </div>
+  </div>
+  <div class="gamma-badge">Made with <span>GAMMA</span></div>
+</div>
+
+<!-- ════ SLIDE 8 ════ -->
+<div class="slide-counter">08 / 10</div>
+<div class="slide">
+  <div class="slide-inner">
+    <h1 class="slide-h1">技術創新：硬體自動化與數位轉型</h1>
+    <p class="slide-body">面對人力短缺、成本攀升與消費者期望持續提高的三重壓力，物流業正積極擁抱科技創新，從硬體自動化到軟體數位化，全方位重塑最後一哩配送的運作模式。以下三大技術領域，正引領這場配送革命。</p>
+
+    <div class="s8-layout">
+      <!-- Left: Automation -->
+      <div>
+        <div class="s8-col-title">🤖 自動化載具創新</div>
+        <div class="s8-sub-cards">
+          <div class="s8-sub-card">
+            <div class="s8-sub-title">人行道機器人</div>
+            <div class="s8-sub-body">適合高密度住宅區、低速環境，可自主避障、按鈴通知取件，已在美國、歐洲多國進入商業試營運階段。</div>
+          </div>
+          <div class="s8-sub-card amber-card">
+            <div class="s8-sub-title">無人機配送</div>
+            <div class="s8-sub-body">適合偏遠地區、緊急醫療配送，可突破地面交通限制，大幅縮短送達時程。台灣已於離島地區展開試點。</div>
+          </div>
+          <div class="s8-wide-card">
+            <div class="s8-sub-title">自駕貨櫃車</div>
+            <div class="s8-sub-body">探討中長程幹線與最後一哩的銜接點，可實現 24 小時不間斷運輸，有效解決司機短缺問題。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Digital + IoT -->
+      <div>
+        <div class="s8-iot-box">
+          <div class="s8-iot-title">💡 數位孿生與路徑優化</div>
+          <p class="s8-iot-body" style="margin-bottom:10px;">傳統的路徑規劃多基於靜態地圖與歷史數據，難以應對城市交通的動態變化。現代 AI 驅動的數位孿生系統，可即時整合以下變數進行動態排程：</p>
+          <ul class="s8-right-list">
+            <li><strong>動態交通流：</strong>透過 GPS 與交通 API，即時掌握路況並自動修正路線</li>
+            <li><strong>天氣因素：</strong>預測雨天、颱風等惡劣天候對配送時程的影響</li>
+            <li><strong>路邊停車可用性：</strong>即時偵測卸貨點周邊停車狀況，預先規劃備用方案</li>
+            <li><strong>動態批次化：</strong>在短時間內將不同訂單整合成最優路徑組合</li>
+          </ul>
+        </div>
+        <div class="s8-iot-box" style="margin-top:20px;">
+          <div class="s8-iot-title">📡 物聯網監控</div>
+          <p class="s8-iot-body">透過 IoT 感測器網絡，實現溫控產品的冷鏈追蹤、資產安全監控，以及車輛狀態的即時診斷，大幅降低異常事件的發生頻率與處理成本。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="gamma-badge">Made with <span>GAMMA</span></div>
+</div>
+
+<!-- ════ SLIDE 9 ════ -->
+<div class="slide-counter">09 / 10</div>
+<div class="slide">
+  <div class="slide-inner">
+    <h1 class="slide-h1">創新配送模式與 AI 即時優化</h1>
+    <p class="slide-body">除了硬體自動化，最後一哩配送的創新更體現在營運模式的根本變革。以下四種創新模式，正逐步改變城市物流的生態系，而 AI 技術則是驅動這些模式高效運作的核心引擎。</p>
+
+    <div class="s9-innov-cards">
+      <div class="innov-card2">
+        <div class="innov-card-img c1">📦</div>
+        <div class="innov-card-body2">
+          <div class="innov-card-title2">智能櫃（Smart Locker）</div>
+          <div class="innov-card-desc2">24 小時自助取件，徹底解決無人簽收問題。消費者可依自身時程彈性取件，大幅降低配送失敗率。台灣目前已有 i郵箱、蝦皮智取櫃等多種解決方案，覆蓋率持續提升。</div>
+        </div>
+      </div>
+      <div class="innov-card2">
+        <div class="innov-card-img c2">🏙️</div>
+        <div class="innov-card-body2">
+          <div class="innov-card-title2">共同配送（Collaborative Delivery）</div>
+          <div class="innov-card-desc2">多家企業共享運輸資源，整合訂單密度，提高車輛使用率，同時降低單位成本與碳排放。日本「宅配便共同配送」模式已成熟運作數十年，是台灣可借鑑的最佳實踐。</div>
+        </div>
+      </div>
+      <div class="innov-card2">
+        <div class="innov-card-img c3">🛵</div>
+        <div class="innov-card-body2">
+          <div class="innov-card-title2">群眾外包配送（Crowdsourcing）</div>
+          <div class="innov-card-desc2">透過平台媒合兼職司機與配送需求，台灣現有超過 200 萬名外送司機隨時待命，平均 46 分鐘即可完成配送。此模式大幅降低固定人力成本，並提供彈性運力應對尖峰需求。</div>
+        </div>
+      </div>
+      <div class="innov-card2">
+        <div class="innov-card-img c4">🏪</div>
+        <div class="innov-card-body2">
+          <div class="innov-card-title2">微型物流中心（Micro Fulfillment Center）</div>
+          <div class="innov-card-desc2">在靠近消費者的都會區設立小型倉庫，儲存高周轉商品，支援小時達與當日達服務。此模式大幅縮短最後一哩距離，是實現「即時零售」的關鍵基礎設施。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s9-ai">
+      <div class="s9-ai-title">AI 驅動的即時數據優化機制</div>
+      <p class="slide-body" style="margin-bottom:12px;">AI 不僅是運算工具，更是物流系統的「大腦」，負責即時處理以下動態變數，實現從被動反應到主動預測的根本轉變：</p>
+      <div class="s9-ai-grid">
+        <div class="s9-ai-block">
+          <div class="s9-ai-num">1</div>
+          <div>
+            <div class="s9-ai-content-title">動態路由演算法</div>
+            <div class="s9-ai-content-body">整合即時路況、GPS 數據與交通 API，AI 可在司機行進途中因應突發狀況（如事故、道路施工）即時修正路線。同時利用歷史數據預測特定時段（如週五傍晚、雨天）的交通熱點，預先規避高風險路段。多約束求解機制可同時計算車輛載重、司機工時、客戶指定時段與路徑最短化，找出全局最優解。</div>
+          </div>
+        </div>
+        <div class="s9-ai-block">
+          <div class="s9-ai-num">2</div>
+          <div>
+            <div class="s9-ai-content-title">需求預測與庫存前置</div>
+            <div class="s9-ai-content-body">透過分析地區性消費趨勢、季節性波動與促銷活動數據，AI 可預測哪些商品在哪些區域需求最高，並在需求發生前將商品預先移往區域性微型物流中心。這種「預測性庫存部署」策略，可將平均配送時程縮短 30–50%，同時降低庫存持有成本。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="gamma-badge">Made with <span>GAMMA</span></div>
+</div>
+
+<!-- ════ SLIDE 10 ════ -->
+<div class="slide-counter">10 / 10</div>
+<div class="slide">
+  <div class="slide-inner">
+    <h1 class="slide-h1">結語：最後一哩的未來展望</h1>
+    <p class="slide-body">最後一哩配送的創新浪潮才剛剛開始。隨著 5G 通訊、人工智慧、自動駕駛與物聯網技術的成熟，未來十年的城市物流將發生翻天覆地的變化。從無人機常態化配送、地下物流管道系統，到完全自動化的微型物流中心，每一項技術突破都將重新定義「送貨」的意涵。</p>
+
+    <div class="s10-cards">
+      <div class="s10-card dark1">
+        <div class="s10-card-icon">🌱 永續化</div>
+        <div class="s10-card-body">電動車隊、自行車配送、碳足跡追蹤，綠色物流將從口號轉化為法規強制要求。</div>
+      </div>
+      <div class="s10-card dark2">
+        <div class="s10-card-icon">⚡ 即時化</div>
+        <div class="s10-card-body">小時達、分鐘達將成為都會區標準服務，微型物流中心密度持續提升。</div>
+      </div>
+      <div class="s10-card warm1">
+        <div class="s10-card-icon">🤖 自動化</div>
+        <div class="s10-card-body">機器人、無人機、自駕車將承擔更多配送任務，人力聚焦於高價值服務環節。</div>
+      </div>
+      <div class="s10-card warm2">
+        <div class="s10-card-icon">🔗 整合化</div>
+        <div class="s10-card-body">共同配送、平台整合、數據共享，物流生態系將朝向協同合作的方向演進。</div>
+      </div>
+    </div>
+
+    <p class="s10-body">對物流與供應鏈從業人員而言，理解最後一哩配送的核心挑戰與創新趨勢，不僅是專業知識的累積，更是應對未來職場變遷的必要準備。無論您未來投身於物流業者、電商平台、顧問公司或政府部門，今天所探討的這些概念，都將成為您職涯中不可或缺的知識基礎。</p>
+
+    <div class="s10-quote">
+      最後一哩配送的競爭，本質上是「效率、成本、體驗」三者之間的動態平衡。能在這三者之間找到最佳解的企業，將在下一個十年的物流戰場中脫穎而出。
+    </div>
+
+    <div class="s10-footer-tags">
+      <span class="tag-sm">感謝聆聽</span>
+      <span class="tag-sm">流通管理課程</span>
+      <span class="tag-sm">58433012 沈依妮・58433014 白祐嘉</span>
+    </div>
+  </div>
+  <div class="gamma-badge">Made with <span>GAMMA</span></div>
+</div>
+
+</body>
+</html>
