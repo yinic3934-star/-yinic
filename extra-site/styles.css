@@ -1,0 +1,5 @@
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans TC',Arial;line-height:1.5;margin:0;padding:2rem;background:#f7f9fb;color:#0b2545}
+header{background:#fff;padding:1.25rem;border-radius:8px;box-shadow:0 1px 3px rgba(11,37,69,.06);margin-bottom:1rem}
+h1{margin:0 0 .25rem}
+button{background:#2563eb;color:#fff;border:none;padding:.6rem 1rem;border-radius:6px;cursor:pointer}
+#msg{margin-top:1rem;color:#1f2937}
